@@ -5,31 +5,27 @@ import tsconfigPaths from 'vite-tsconfig-paths'
 
 import 'dotenv/config'
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const getCache = ({ name, pattern }: any) => ({
-  urlPattern: pattern,
-  handler: 'NetworkFirst' as const,
-  options: {
-    cacheName: name,
-    expiration: {
-      maxEntries: 500,
-      maxAgeSeconds: 60 * 60 * 24 * 365 * 2 // 2 years
-    },
-    cacheableResponse: {
-      statuses: [0, 200]
-    }
-  }
-})
-
 function vitePwa() {
   return VitePWA({
     workbox: {
       globPatterns: ['**/*'],
       runtimeCaching: [
-        getCache({
-          pattern: /^https:\/\/ik.imagekit.io\/shrentws\/motomain-rental\.png/,
-          name: 'ik-logo'
-        })
+        {
+          urlPattern: ({ url }) => {
+            return url.pathname.startsWith('/shrentws')
+          },
+          handler: 'NetworkFirst' as const,
+          options: {
+            cacheName: 'ik-logo',
+            expiration: {
+              maxEntries: 500,
+              maxAgeSeconds: 60 * 60 * 24 * 365 * 2 // 2 years
+            },
+            cacheableResponse: {
+              statuses: [0, 200]
+            }
+          }
+        }
       ]
     },
     includeAssets: ['**/*'],
