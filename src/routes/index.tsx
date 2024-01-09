@@ -1,7 +1,7 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 
 import RootLayout from './layout'
-import { Home, ErrorBoundary } from '~/pages'
+import { Home, ErrorBoundary } from '@/pages'
 
 const router = createBrowserRouter([
   {

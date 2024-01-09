@@ -1,7 +1,7 @@
-import 'tailwindcss/tailwind.css'
 import { createRoot } from 'react-dom/client'
 import { registerSW } from 'virtual:pwa-register'
 
+import './global.css'
 import App from './app'
 
 const updateSW = registerSW({

@@ -1,7 +1,12 @@
 import { lazy } from 'react'
 
 const Routes = lazy(() => import('./routes'))
+import { ThemeProvider } from '@/components/theme-provider'
 
 export default function App() {
-  return <Routes />
+  return (
+    <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
+      <Routes />
+    </ThemeProvider>
+  )
 }

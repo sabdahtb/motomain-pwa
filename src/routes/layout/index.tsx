@@ -1,21 +1,23 @@
-import { Outlet, useNavigation } from 'react-router-dom'
+import { Outlet } from 'react-router-dom'
 
-import { Footer, Loading, Navbar } from '~/components'
+import Footer from '@/components/footer'
+import Navbar from '@/components/navbar'
 
 export default function RootLayout() {
-  const navigation = useNavigation()
-
-  if (navigation.state === 'loading') {
-    return <Loading />
-  }
-
   return (
-    <main className="flex min-h-screen flex-col">
-      <section className="flex-1">
-        <Navbar />
+    <main className="layout-container">
+      <Navbar />
+      <section className="py-12">
         <Outlet />
       </section>
       <Footer />
+      <div className="fixed bottom-8 right-4 cursor-pointer lg:bottom-4">
+        <img
+          src="https://ik.imagekit.io/shrentws/icon/whatsapp.png"
+          alt="_wa"
+          className="w-12"
+        />
+      </div>
     </main>
   )
 }
