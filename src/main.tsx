@@ -1,6 +1,7 @@
 import { createRoot } from 'react-dom/client'
 import { registerSW } from 'virtual:pwa-register'
 
+import '@/lib/i18n'
 import './global.css'
 import App from './app'
 
