@@ -1,5 +1,22 @@
 {
   "main": {
     "header": "Welcome to the app!"
+  },
+  "landing": {
+    "title": "Discover Bali's Freedom: Rent Your Ideal Ride with Ease",
+    "description": "Experience Bali like never before with our hassle-free motorbike rental service. Explore the vibrant streets, pristine beaches, and hidden gems of Bali at your own pace. From scooters to premium bikes, find your perfect ride and unlock the true essence of this tropical paradise. Start your adventure today with seamless booking and reliable service, ensuring an unforgettable journey through Bali's wonders."
+  },
+  "form": {
+    "name": "Full Name",
+    "phone": "Phone Number",
+    "pickDate": "Pickup Date",
+    "duration": "Rental Duration (in days)",
+    "pickOption": "Pickup Option",
+    "selfPick": "Self-Pickup",
+    "delivery": "Delivery",
+    "title": "Rental Form"
+  },
+  "common": {
+    "cancel": "Cancel"
   }
 }
