@@ -12,7 +12,8 @@
     "build": "tsc && vite build",
     "serve": "vite preview --port 4173",
     "lint": "eslint src --max-warnings=0",
-    "typecheck": "tsc --project tsconfig.json --noEmit"
+    "typecheck": "tsc --project tsconfig.json --noEmit",
+    "format": "prettier --write ./src"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",

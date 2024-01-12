@@ -7,7 +7,7 @@ export default function RootLayout() {
   return (
     <main className="layout-container">
       <Navbar />
-      <section className="py-12">
+      <section>
         <Outlet />
       </section>
       <Footer />

@@ -1,13 +1,13 @@
+import i18next from 'i18next'
 import { Languages } from 'lucide-react'
 
-import { Button } from '@/components/ui/button'
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu'
-import i18next from 'i18next'
+import { Button } from '@/components/ui/button'
 
 export function LangToggle() {
   function changeLanguage(lang: 'id' | 'en') {

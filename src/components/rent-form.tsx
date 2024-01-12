@@ -2,11 +2,11 @@ import * as z from 'zod'
 import * as React from 'react'
 import { format } from 'date-fns'
 import { useForm } from 'react-hook-form'
-import { CalendarIcon } from 'lucide-react'
-import { zodResolver } from '@hookform/resolvers/zod'
 import { id, enUS } from 'date-fns/locale'
+import { CalendarIcon } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
+import { zodResolver } from '@hookform/resolvers/zod'
 
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 import {
   Form,
   FormControl,
@@ -14,22 +14,23 @@ import {
   FormItem,
   FormLabel
 } from '@/components/ui/form'
-import { cn } from '@/lib/utils'
-import { Input } from '@/components/ui/input'
-import { Button } from '@/components/ui/button'
-import { useTranslation } from 'react-i18next'
 import {
   Popover,
   PopoverContent,
   PopoverTrigger
 } from '@/components/ui/popover'
+import { cn } from '@/lib/utils'
+import { Input } from '@/components/ui/input'
+import { Button } from '@/components/ui/button'
 import { Calendar } from '@/components/ui/calendar'
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 
 interface Props extends React.ComponentProps<'form'> {
   closeModal: () => void
+  selected?: string
 }
 
-export default function RentForm({ className, closeModal }: Props) {
+export default function RentForm({ className, closeModal, selected }: Props) {
   const { t, i18n } = useTranslation()
   const [calendarOpen, setCalendarOpen] = React.useState(false)
 
@@ -52,10 +53,11 @@ export default function RentForm({ className, closeModal }: Props) {
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     closeModal()
+    const motorcycle = selected ?? ''
     const opening =
       i18n.language === 'id'
-        ? 'Halo admin Motomain Rental, saya ingin mengajukan penyeewaan motor Alva Chervo. \n \nBerikut adalah formulir penyewaan saya.'
-        : 'Hello, Motomain Rental admin, I would like to request the rental of an Alva Chervo motorcycle. \n \nHere is my rental form.'
+        ? `Halo admin Motomain Rental, saya ingin mengajukan penyewaan motor ${motorcycle}. \n \nBerikut adalah formulir penyewaan saya.`
+        : `Hello, Motomain Rental admin, I would like to request the rental of an ${motorcycle} motorcycle. \n \nHere is my rental form.`
     const closing = i18n.language === 'id' ? 'Terima kasih' : 'Thank you'
     const date = format(values.pickDate, 'PPP', {
       locale: i18n.language === 'id' ? id : enUS
@@ -202,7 +204,7 @@ export default function RentForm({ className, closeModal }: Props) {
           )}
         />
         <Button type="submit" className="mt-2">
-          Submit
+          {t('common.rent')}
         </Button>
       </form>
     </Form>
