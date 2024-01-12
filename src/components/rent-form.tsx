@@ -34,9 +34,9 @@ export default function RentForm({ className, closeModal }: Props) {
   const [calendarOpen, setCalendarOpen] = React.useState(false)
 
   const formSchema = z.object({
-    username: z.string(),
+    fullName: z.string(),
     phone: z.string(),
-    dob: z.date(),
+    pickDate: z.date(),
     duration: z.string(),
     deliveryOption: z.enum(['selfPick', 'delivery'])
   })
@@ -45,13 +45,39 @@ export default function RentForm({ className, closeModal }: Props) {
     resolver: zodResolver(formSchema),
     defaultValues: {
       phone: '',
-      username: ''
+      fullName: '',
+      duration: ''
     }
   })
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     closeModal()
-    console.log(values)
+    const opening =
+      i18n.language === 'id'
+        ? 'Halo admin Motomain Rental, saya ingin mengajukan penyeewaan motor Alva Chervo. \n \nBerikut adalah formulir penyewaan saya.'
+        : 'Hello, Motomain Rental admin, I would like to request the rental of an Alva Chervo motorcycle. \n \nHere is my rental form.'
+    const closing = i18n.language === 'id' ? 'Terima kasih' : 'Thank you'
+    const date = format(values.pickDate, 'PPP', {
+      locale: i18n.language === 'id' ? id : enUS
+    })
+    const delivery =
+      values.deliveryOption === 'selfPick'
+        ? t('form.selfPick')
+        : t('form.delivery')
+
+    const message =
+      opening +
+      '\n \n' +
+      `${t('form.name')} : ${values.fullName} \n` +
+      `${t('form.phone')} : ${values.phone} \n` +
+      `${t('form.duration')} : ${values.duration} \n` +
+      `${t('form.pickDate')} : ${date} \n` +
+      `${t('form.pickOption')} : ${delivery} \n \n` +
+      closing
+
+    const waNumber = process.env.WA_NUMBER
+    const encodedString = encodeURIComponent(message)
+    window.location.href = `https://wa.me/${waNumber}?text=${encodedString}`
   }
 
   return (
@@ -62,7 +88,7 @@ export default function RentForm({ className, closeModal }: Props) {
       >
         <FormField
           control={form.control}
-          name="username"
+          name="fullName"
           render={({ field }) => (
             <FormItem>
               <FormLabel>{t('form.name')}</FormLabel>
@@ -98,7 +124,7 @@ export default function RentForm({ className, closeModal }: Props) {
         />
         <FormField
           control={form.control}
-          name="dob"
+          name="pickDate"
           render={({ field }) => (
             <FormItem>
               <FormLabel>{t('form.pickDate')}</FormLabel>
