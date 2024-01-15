@@ -35,10 +35,10 @@ export default function RentForm({ className, closeModal, selected }: Props) {
   const [calendarOpen, setCalendarOpen] = React.useState(false)
 
   const formSchema = z.object({
-    fullName: z.string(),
-    phone: z.string(),
+    fullName: z.string().min(2),
+    phone: z.string().min(6),
     pickDate: z.date(),
-    duration: z.string(),
+    duration: z.string().min(1),
     deliveryOption: z.enum(['selfPick', 'delivery'])
   })
 

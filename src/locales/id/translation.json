@@ -2,7 +2,9 @@
   "landing": {
     "title": "Temukan Kebebasan di Bali: Sewa Motor dengan Mudah",
     "rentNow": "Siap untuk petualangan Anda di Bali? \nPesan sepeda motor Anda hari ini dan nikmati pulau ini seperti yang belum pernah Anda lakukan sebelumnya!",
-    "description": "Rasakan pengalaman Bali yang belum pernah Anda temui sebelumnya dengan layanan sewa motor kami yang mudah dan praktis. Jelajahi jalan-jalan yang ramai, pantai-pantai yang indah, dan tempat-tempat tersembunyi di Bali sesuai dengan kecepatan Anda sendiri. Mulai dari skuter hingga motor premium, temukan kendaraan ideal Anda dan temukan keindahan sejati dari surga tropis ini. Mulailah petualangan Anda hari ini dengan pemesanan yang mudah dan layanan yang handal, menjamin perjalanan tak terlupakan melalui keajaiban Bali."
+    "description": "Rasakan pengalaman Bali yang belum pernah Anda temui sebelumnya dengan layanan sewa motor kami yang mudah dan praktis. Jelajahi jalan-jalan yang ramai, pantai-pantai yang indah, dan tempat-tempat tersembunyi di Bali sesuai dengan kecepatan Anda sendiri. Mulai dari skuter hingga motor premium, temukan kendaraan ideal Anda dan temukan keindahan sejati dari surga tropis ini. Mulailah petualangan Anda hari ini dengan pemesanan yang mudah dan layanan yang handal, menjamin perjalanan tak terlupakan melalui keajaiban Bali.",
+    "whyChoose": "Mengapa Memilih Motomain Rental?",
+    "contact": "Hubungi Kami"
   },
   "form": {
     "name": "Nama Lengkap",
@@ -16,6 +18,9 @@
   },
   "common": {
     "cancel": "Batal",
-    "rent": "Sewa Sekarang"
+    "rent": "Sewa Sekarang",
+    "daily": "Harian",
+    "weekly": "Mingguan",
+    "monthly": "Bulanan"
   }
 }
